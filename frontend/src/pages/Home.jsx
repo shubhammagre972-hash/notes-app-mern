@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import NoteModal from '../components/NoteModal';
 import { useAuth } from '../context/ContextProvider';
+import API_BASE from '../config';
 
 const Home = () => {
   const { token } = useAuth();
@@ -15,7 +16,7 @@ const Home = () => {
   // Fetch all notes for the logged-in user
   const fetchNotes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/notes', {
+      const response = await axios.get(`${API_BASE}/api/notes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes(response.data.notes);
@@ -33,7 +34,7 @@ const Home = () => {
   // Delete a note
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      await axios.delete(`${API_BASE}/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes((prev) => prev.filter((n) => n._id !== id));

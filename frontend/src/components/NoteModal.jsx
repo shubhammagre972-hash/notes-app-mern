@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useAuth } from '../context/ContextProvider'
+import API_BASE from '../config'
 
 const NoteModal = ({ isOpen, onClose, noteToEdit, refreshNotes }) => {
   const { user, token } = useAuth();
@@ -36,9 +37,9 @@ const NoteModal = ({ isOpen, onClose, noteToEdit, refreshNotes }) => {
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
     if (noteToEdit) {
-      await axios.put(`http://localhost:5000/api/notes/${noteToEdit._id}`, { title, description }, config);
+      await axios.put(`${API_BASE}/api/notes/${noteToEdit._id}`, { title, description }, config);
     } else {
-      await axios.post('http://localhost:5000/api/notes/add', { title, description }, config);
+      await axios.post(`${API_BASE}/api/notes/add`, { title, description }, config);
     }
 
     onClose();
