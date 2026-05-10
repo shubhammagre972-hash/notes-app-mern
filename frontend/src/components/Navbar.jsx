@@ -19,7 +19,6 @@ const Navbar = () => {
       <Link to="/" className="text-xl font-bold text-white tracking-tight">
         NoteApp
       </Link>
-
       {/* Right side */}
       <div className="flex items-center gap-3">
         {user ? (
