@@ -45,7 +45,7 @@ const NoteCard = ({ note, index = 0, onEdit, onDelete }) => {
 
   return (
     <div
-      className={`bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 border-l-4 ${accentColor} overflow-hidden group`}
+      className={`bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 ${accentColor} overflow-hidden group`}
     >
       <div className="p-5">
         <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">

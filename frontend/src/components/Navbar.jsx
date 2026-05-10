@@ -13,13 +13,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shadow-sm">
+    <nav className="bg-white/10 backdrop-blur-md border-b border-white/20 px-6 py-3 flex items-center justify-between">
 
       {/* Logo */}
-      <Link
-        to="/"
-        className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
-      >
+      <Link to="/" className="text-xl font-bold text-white tracking-tight">
         NoteApp
       </Link>
 
@@ -29,16 +26,16 @@ const Navbar = () => {
           <>
             {/* Avatar + name */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white text-sm font-semibold">
+              <div className="w-8 h-8 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white text-sm font-semibold">
                 {user.name?.charAt(0).toUpperCase()}
               </div>
-              <span className="text-sm font-medium text-gray-700">{user.name}</span>
+              <span className="text-sm font-medium text-white">{user.name}</span>
             </div>
 
             {/* Logout */}
             <button
               onClick={handleLogout}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-lg hover:bg-blue-700 hover:border-blue-700 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-blue-700 bg-white rounded-lg hover:bg-blue-50 transition-all"
             >
               <FiLogOut size={15} />
               Logout
