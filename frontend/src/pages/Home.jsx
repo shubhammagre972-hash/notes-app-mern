@@ -6,7 +6,6 @@ import NoteCard from '../components/NoteCard';
 import { useAuth } from '../context/ContextProvider';
 import API_BASE from '../config';
 import { FiSearch } from 'react-icons/fi';
-
 const Home = () => {
   const { token } = useAuth();
   const [notes, setNotes] = useState([]);
@@ -84,9 +83,11 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* Search input */}
-              <div className="flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-xl px-4 py-2 w-full md:w-64 shadow-sm">
-                <FiSearch className="text-gray-400 flex-shrink-0" size={16} />
+              {/* Search input — matches login field style */}
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 h-11 bg-white w-full md:w-64">
+                <svg className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" viewBox="0 0 16 16" fill="none">
+                  <path d="M11 11L15 15M13 7a6 6 0 11-12 0 6 6 0 0112 0z" stroke="#9ca3af" strokeWidth="1.2" strokeLinecap="round"/>
+                </svg>
                 <input
                   id="search-notes"
                   name="search"
@@ -94,7 +95,7 @@ const Home = () => {
                   placeholder="Search notes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 w-full"
+                  className="flex-1 outline-none text-sm text-gray-700 bg-transparent placeholder-gray-400"
                 />
               </div>
             </div>
@@ -109,10 +110,9 @@ const Home = () => {
         <div className="flex justify-end mb-6">
           <button
             onClick={handleAddNew}
-            className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-md hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all text-sm font-medium"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-md hover:shadow-lg"
           >
-            <span className="text-lg leading-none">+</span>
-            Add New Note
+            + Add New Note
           </button>
         </div>
 
@@ -142,7 +142,7 @@ const Home = () => {
             {!searchQuery && (
               <button
                 onClick={handleAddNew}
-                className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 transition-all"
+                className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md hover:shadow-lg transition"
               >
                 Create Your First Note
               </button>
