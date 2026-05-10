@@ -68,11 +68,10 @@ const Home = () => {
       <div
         className="relative bg-cover bg-center h-64 md:h-80"
         style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1508739773434-c26b3d09e071?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')`,
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
         }}
       >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-45" />
+        {/* No overlay needed — gradient is already dark */}
 
         {/* Hero card */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
