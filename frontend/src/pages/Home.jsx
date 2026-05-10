@@ -5,6 +5,7 @@ import NoteModal from '../components/NoteModal';
 import NoteCard from '../components/NoteCard';
 import { useAuth } from '../context/ContextProvider';
 import API_BASE from '../config';
+import { FiSearch } from 'react-icons/fi';
 
 const Home = () => {
   const { token } = useAuth();
@@ -60,18 +61,53 @@ const Home = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      {/* Navbar — no search bar here anymore, it's in the hero */}
+      <Navbar />
 
+      {/* Hero section */}
+      <div
+        className="relative bg-cover bg-center h-64 md:h-80"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')`,
+        }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-45" />
+
+        {/* Hero card */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 w-full max-w-2xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-800">My Notes</h1>
+                <p className="text-sm text-gray-500 mt-1">
+                  {notes.length} {notes.length === 1 ? 'note' : 'notes'} saved
+                </p>
+              </div>
+
+              {/* Search input */}
+              <div className="flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-xl px-4 py-2 w-full md:w-64 shadow-sm">
+                <FiSearch className="text-gray-400 flex-shrink-0" size={16} />
+                <input
+                  id="search-notes"
+                  name="search"
+                  type="text"
+                  placeholder="Search notes..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent outline-none text-sm text-gray-700 placeholder-gray-400 w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
       <div className="max-w-6xl mx-auto px-6 py-8">
 
-        {/* Top bar */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">My Notes</h1>
-            <p className="text-sm text-gray-500 mt-1">
-              {notes.length} {notes.length === 1 ? 'note' : 'notes'} saved
-            </p>
-          </div>
+        {/* Add button */}
+        <div className="flex justify-end mb-6">
           <button
             onClick={handleAddNew}
             className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-md hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all text-sm font-medium"
@@ -81,7 +117,7 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Loading */}
+        {/* Loading spinner */}
         {loading ? (
           <div className="flex justify-center items-center py-24">
             <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
