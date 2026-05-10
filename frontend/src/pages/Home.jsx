@@ -68,7 +68,7 @@ const Home = () => {
       <div
         className="relative bg-cover bg-center h-64 md:h-80"
         style={{
-        backgroundImage: `url('https://source.unsplash.com/JmsXUz3D8rc/1350x900')`,
+        backgroundImage: `url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')`,
         }}
       >
         {/* Dark overlay */}
